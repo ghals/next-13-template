@@ -1,3 +1,74 @@
 {
-  "extends": "next/core-web-vitals"
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:@typescript-eslint/recommended", "plugin:@next/next/recommended", "prettier"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["react", "@typescript-eslint", "react-hooks", "import"],
+  "settings": {
+    "react": {
+      "pragma": "React",
+      "version": "detect"
+    }
+  },
+  "rules": {
+    "react-hooks/rules-of-hooks": "error",
+    "@next/next/no-html-link-for-pages": ["error", "app"],
+    "react-hooks/exhaustive-deps": "warn",
+    "react/react-in-jsx-scope": "off",
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "internal", ["parent", "sibling", "index"], "unknown", "object", "type"],
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "builtin",
+            "position": "before"
+          },
+          {
+            "pattern": "next/**",
+            "group": "external",
+            "position": "before"
+          },
+          {
+            "pattern": "@components/**",
+            "group": "external",
+            "position": "after"
+          },
+          {
+            "pattern": "{@images/**,@svgs/**,@apis/**,@recoilAtoms/**}",
+            "group": "internal",
+            "position": "before"
+          },
+          {
+            "pattern": "@constants/*",
+            "group": "unknown"
+          },
+          {
+            "pattern": "@hooks/*",
+            "group": "unknown"
+          },
+          {
+            "pattern": "@utils/*",
+            "group": "unknown"
+          }
+        ],
+        "distinctGroup": true,
+        "pathGroupsExcludedImportTypes": ["react"],
+        "newlines-between": "always"
+      }
+    ]
+  },
+  "ignorePatterns": [".eslintrc.cjs", "next.config.js"]
 }
