@@ -47,7 +47,7 @@
             "position": "after"
           },
           {
-            "pattern": "{@images/**,@svgs/**,@apis/**,@recoilAtoms/**}",
+            "pattern": "{@images/**,@svgs/**,@apis/**,@recoilAtoms/**,@providers/**}",
             "group": "internal",
             "position": "before"
           },

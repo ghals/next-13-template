@@ -24,6 +24,7 @@
       "@apis/*": ["apis/*"],
       "@hooks/*": ["hooks/*"],
       "@utils/*": ["utils/*"],
+      "@providers/*":["providers/*"],
       "@components/*": ["components/*"],
       "@constants/*": ["constants/*"],
       "@images/*": ["public/images/*"],
