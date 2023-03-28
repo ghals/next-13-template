@@ -1,7 +1,8 @@
-import { RecoilRoot } from 'recoil'
+import AppLayout from '@components/AppLayout'
 
-import ReactQueryProvider from '@providers/ReactQueryProvider'
 import RootStyleRegistry from '@providers/RootStyleRegistry'
+import ReactQueryProvider from '@providers/ReactQueryProvider'
+import RecoilRootProvider from '@providers/RecoilRootProvider'
 
 export const metadata = {
   title: 'Create Next App',
@@ -13,9 +14,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body>
         <ReactQueryProvider>
-          <RecoilRoot>
-            <RootStyleRegistry>{children}</RootStyleRegistry>
-          </RecoilRoot>
+          <RecoilRootProvider>
+            <RootStyleRegistry>
+              <AppLayout>{children}</AppLayout>
+            </RootStyleRegistry>
+          </RecoilRootProvider>
         </ReactQueryProvider>
       </body>
     </html>

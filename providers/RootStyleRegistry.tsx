@@ -4,7 +4,8 @@ import { ReactNode, useState } from 'react'
 import { useServerInsertedHTML } from 'next/navigation'
 
 import createCache from '@emotion/cache'
-import { CacheProvider } from '@emotion/react'
+import { CacheProvider, Global } from '@emotion/react'
+import { GlobalStyle } from 'app/global.style'
 
 export default function RootStyleRegistry({ children }: { children: ReactNode }) {
   const [cache] = useState(() => {
@@ -24,5 +25,10 @@ export default function RootStyleRegistry({ children }: { children: ReactNode })
     )
   })
 
-  return <CacheProvider value={cache}>{children}</CacheProvider>
+  return (
+    <CacheProvider value={cache}>
+      {children}
+      <Global styles={GlobalStyle} />
+    </CacheProvider>
+  )
 }
